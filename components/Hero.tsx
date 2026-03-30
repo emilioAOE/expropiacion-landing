@@ -153,7 +153,7 @@ export default function Hero() {
         >
           <path
             d="M0 60V30C240 0 480 0 720 30C960 60 1200 60 1440 30V60H0Z"
-            fill="#f0f7ff"
+            fill="#f5f8fc"
           />
         </svg>
       </div>
