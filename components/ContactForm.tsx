@@ -62,6 +62,26 @@ export default function ContactForm() {
     if (!validate()) return;
 
     setIsSubmitting(true);
+
+    // Fire-and-forget to Google Sheets
+    fetch(
+      "https://script.google.com/macros/s/AKfycbzyUkJeHXdgFZ62_3luzUoD2fkZjJZMewKiLT_R-sF2M20vDeWT1-ox5Y0vLltw-wM8Ug/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify({
+          proyecto: "expropiacion",
+          nombre: form.nombre,
+          telefono: form.telefono,
+          email: form.email,
+          comuna: form.comuna,
+          tipoPropiedad: form.tipoPropiedad,
+          etapaProceso: form.etapaProceso,
+          descripcion: form.descripcion,
+        }),
+      }
+    ).catch(() => {});
+
     try {
       const res = await fetch("/api/lead", {
         method: "POST",
